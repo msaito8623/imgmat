@@ -22,14 +22,14 @@
 #' print(plt)
 #' @export
 #'
-mycontour = function (plt, ylim=NULL, zlim=NULL, breaks=10) {
+mycontour = function (plt, ylim=NULL, zlim=NULL, breaks=10, line_color_ratio=4) {
 	floor_dec = function(x, level=1) round(x - 5*10^(-level-1), level)
 	ceiling_dec = function(x, level=1) round(x + 5*10^(-level-1), level)
 	zvec = plt$data[[plt$labels$z]]
 	cmin = floor_dec(min(zvec,na.rm=TRUE),2)
 	cmax = ceiling_dec(max(zvec,na.rm=TRUE),2)
 	breaks1 = round(seq(cmin, cmax, length.out=breaks),2)
-	breaks2 = round(seq(cmin, cmax, length.out=breaks*2),2)
+	breaks2 = round(seq(cmin, cmax, length.out=breaks*line_color_ratio),2)
 
 	plt = plt + metR::geom_contour_fill(breaks=breaks2)
 	plt = plt + metR::geom_contour2(breaks=breaks1)
