@@ -20,7 +20,9 @@ dat2mat = function (dat, xcol, ycol, zcol) {
 	dat = dat[,c(xcol,ycol,zcol)]
 	dat[[xcol]] = to_index(dat[[xcol]])
 	dat[[ycol]] = to_index(dat[[ycol]])
-	assert(nrow(unique(dat[,c(xcol,ycol)]))==nrow(dat))
+	if (nrow(unique(dat[,c(xcol,ycol)]))!=nrow(dat)) {
+		stop('Duplicated rows detected.')
+	}
 	mat = matrix(NA, ncol=length(unique(dat[[xcol]])), nrow=length(unique(dat[[ycol]])))
 	for ( i in 1:nrow(dat) ) {
 		cx = dat[[xcol]][i]

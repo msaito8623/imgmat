@@ -4,7 +4,7 @@
 \alias{mycontour}
 \title{Filled contour plot based on ggplot}
 \usage{
-mycontour(plt, ylim = NULL, zlim = NULL, breaks = 10)
+mycontour(plt, ylim = NULL, zlim = NULL, breaks = 10, line_color_ratio = 4)
 }
 \arguments{
 \item{plt}{A ggplot object. It should already have the input dataframe and the aes values for x, y, and z.}
